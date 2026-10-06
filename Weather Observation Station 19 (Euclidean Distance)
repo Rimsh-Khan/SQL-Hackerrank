@@ -1,0 +1,16 @@
+SELECT ROUND(
+    SQRT(
+        (MAX(LAT_N) - MIN(LAT_N)) * (MAX(LAT_N) - MIN(LAT_N))
+        +
+        (MAX(LONG_W) - MIN(LONG_W)) * (MAX(LONG_W) - MIN(LONG_W))
+    ),
+    4
+)
+FROM STATION;
+
+# FORMULA (Euclidean Distance):
+Example in 2D
+POWER(A, 2)       → A²
+POWER(B, 2)       → B²
+A² + B²           → add them
+SQRT(...)         → √
