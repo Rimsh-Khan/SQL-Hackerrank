@@ -1,0 +1,52 @@
+select round(AVG(LAT_N),4) 
+FROM  (
+select LAT_N,
+row_number()over(order by LAT_N) as rownumber,
+count(LAT_N)over() as total_rows
+FROM station
+) as t
+where rownumber in (
+    floor((total_rows+1)/2),
+    ceil((total_rows+1)/2)
+)
+order by LAT_N asc
+
+
+Explaination:
+Concept	
+ROW_NUMBER()	Gives each row a position
+OVER()	Performs a calculation while keeping the rows
+Subquery	Creates a temporary result to use outside
+FLOOR()	Rounds down
+CEIL()	Rounds up
+IN	Checks whether something matches a list
+AVG()	Calculates average
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Steps to solve
+STATION
+   ↓
+Sort LAT_N
+   ↓
+ROW_NUMBER()
+   ↓
+Give every row a position
+   ↓
+COUNT()
+   ↓
+Find total number of rows
+   ↓
+FLOOR + CEIL
+   ↓
+Find middle position(s)
+   ↓
+WHERE + IN
+   ↓
+Keep middle value(s)
+   ↓
+AVG()
+   ↓
+Calculate median
+   ↓
+ROUND(..., 4)
+   ↓
+Final answer
