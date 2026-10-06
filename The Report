@@ -1,0 +1,30 @@
+select 
+CASE
+when g.grade>=8 THEN s.name
+ELSE NULL
+END as
+name,g.grade,s.marks
+from students as s
+
+JOIN GRADES as g
+ ON MARKS BETWEEN g.min_mark AND g.max_mark
+
+order by g.grade Desc, 
+CASE WHEN g.grade>=8 THEN s.NAME END ASC,
+CASE WHEN g.grade <8 Then s.marks END asc
+
+
+Explaination:
+SELECT
+    CASE ... END AS Name,  ← first column
+    g.grade,                ← second column
+    s.marks                 ← third column
+
+FROM students s
+JOIN grades g
+ON ...                      ← connect the tables
+
+ORDER BY
+    grade DESC,             ← highest grade first
+    name ASC,               ← names for grade 8+
+    marks ASC;              ← marks for grade < 8
