@@ -1,0 +1,6 @@
+SELECT employee, department, salary,
+       ROW_NUMBER() OVER(
+           PARTITION BY department
+           ORDER BY salary DESC
+       ) AS unique_id
+FROM employees;
