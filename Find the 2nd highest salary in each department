@@ -1,0 +1,12 @@
++++++++++++++ Practice questions: window functions in sql +++++++++++++++
+
+Find the 2nd highest salary in each department
+
+SELECT * from
+(
+  SELECT name,department, sales,
+  RANK() over(PARTITION BY catagory ORDER BY salary DESC)AS highest_rank
+  FROM employees
+)
+as ranked_employees
+WHERE highest_rank <=2
