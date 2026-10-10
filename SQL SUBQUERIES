@@ -6,3 +6,11 @@ WHERE price > (
     SELECT AVG(price)
     FROM products
 );
+
+2. 
+SELECT product_name,price
+FROM Products
+Where price=(
+select max(price)
+from products
+)
