@@ -14,3 +14,9 @@ Where price=(
 select max(price)
 from products
 )
+
+3.
+Group By AND Having
+SELECT product_id, SUM(quantity) AS total_quantity
+FROM sales
+GROUP BY product_id;
