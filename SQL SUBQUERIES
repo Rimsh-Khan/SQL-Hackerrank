@@ -1,5 +1,6 @@
+BASIC AND INTERMEDIATE
 
-1. BASIC
+1. SUBQUERIES
 SELECT product_name, price
 FROM products
 WHERE price > (
@@ -16,7 +17,7 @@ from products
 )
 
 3.
-Group By AND Having
+GROUP BY AND HAVING
 SELECT product_id, SUM(quantity) AS total_quantity
 FROM sales
 GROUP BY product_id;
