@@ -20,3 +20,9 @@ Group By AND Having
 SELECT product_id, SUM(quantity) AS total_quantity
 FROM sales
 GROUP BY product_id;
+
+4.
+SELECT product_id, SUM(quantity) AS total_quantity
+FROM sales
+GROUP BY product_id
+HAVING SUM(quantity) > 10;
